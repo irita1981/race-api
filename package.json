@@ -24,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/irita1981/race-api/issues"
   },
+  "puppeteer": {
+    "default_browser": "chrome"
+  },
   "homepage": "https://github.com/irita1981/race-api#readme"
+  
 }
