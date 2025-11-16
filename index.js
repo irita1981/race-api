@@ -1,5 +1,4 @@
 const express = require('express');
-const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer');
 const app = express();
 
@@ -11,8 +10,6 @@ app.get('/race-data', async (req, res) => {
   }
 
   const url = `https://kyoteibiyori.com/race_shusso.php?place_no=${place_no}&race_no=${race_no}&hiduke=${hiduke}&slider=1`;
-
-  console.log('🔍 chromium.executablePath =', await chromium.executablePath);
 
   try {
     const browser = await puppeteer.launch({
