@@ -22,5 +22,8 @@
   "puppeteer": {
     "default_browser": "chrome"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "homepage": "https://github.com/irita1981/race-api#readme"
 }
