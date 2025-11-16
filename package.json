@@ -15,7 +15,7 @@
     "axios": "^1.12.2",
     "cheerio": "^1.1.2",
     "express": "^4.21.2",
-    "puppeteer": "^21.11.0"
+    "puppeteer": "^20.9.0"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,4 @@
     "default_browser": "chrome"
   },
   "homepage": "https://github.com/irita1981/race-api#readme"
-  
 }
