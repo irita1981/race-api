@@ -1,5 +1,6 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
+const puppeteer = require('puppeteer-core');
 const app = express();
 
 app.get('/race-data', async (req, res) => {
@@ -13,10 +14,11 @@ app.get('/race-data', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      headless: 'new',
-      executablePath: puppeteer.executablePath(),
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+      args: chromium.args,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+});
+
 
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
@@ -115,6 +117,7 @@ app.get('/race-data', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('✅ APIサーバーが http://localhost:3000/race-data で起動中');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ APIサーバーが http://localhost:${PORT}/race-data で起動中`);
 });
