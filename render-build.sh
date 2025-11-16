@@ -6,5 +6,5 @@ mkdir -p $PUPPETEER_CACHE_DIR
 
 npm install
 
-# Puppeteer CLI を直接呼び出す
-./node_modules/.bin/puppeteer browsers install chrome
+# PuppeteerのChromeを直接インストール
+node -e "require('puppeteer').createBrowserFetcher().download('chrome')"
