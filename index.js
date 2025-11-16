@@ -14,6 +14,7 @@ app.get('/race-data', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: 'new',
+      executablePath: puppeteer.executablePath(),
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
