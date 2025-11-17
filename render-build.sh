@@ -2,4 +2,4 @@
 set -o errexit
 
 npm install
-npx puppeteer install
+npx puppeteer browsers install chrome
