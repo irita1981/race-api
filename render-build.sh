@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -o errexit
 
+echo "📦 Installing dependencies..."
 npm install
-npx puppeteer browsers install chrome
+
+echo "🧩 Installing Chrome for Puppeteer..."
+npx puppeteer install
+
+echo "✅ Build script completed."
