@@ -4,7 +4,7 @@ set -o errexit
 echo "📦 Installing dependencies..."
 npm install
 
-echo "🧩 Installing Chrome for Puppeteer..."
+echo "🧩 Installing Chrome manually..."
 npx puppeteer install
 
 echo "✅ Build script completed."
