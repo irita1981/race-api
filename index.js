@@ -18,7 +18,7 @@ app.get('/race-data', async (req, res) => {
     const browser = await puppeteer.launch({
       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH, // Docker内Chrome
       args: ['--no-sandbox', '--disable-setuid-sandbox'], 
-      headless: false
+      headless: true
     });
 
     const page = await browser.newPage();
