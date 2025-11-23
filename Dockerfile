@@ -1,7 +1,6 @@
-# ベースイメージとして公式のNode.jsを使用
 FROM node:20-slim
 
-# 必要なパッケージをインストール（Puppeteer用の依存）
+# Puppeteerが必要とする依存ライブラリをインストール
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -19,23 +18,24 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
+    libgbm1 \
     xdg-utils \
     --no-install-recommends && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 作業ディレクトリを設定
+# 作業ディレクトリ
 WORKDIR /app
 
-# パッケージファイルをコピーして依存関係をインストール
+# パッケージをインストール
 COPY package*.json ./
 RUN npm install
 
-# アプリケーションのコードをコピー
+# アプリケーションをコピー
 COPY . .
 
 # ポートを公開
 EXPOSE 3000
 
-# アプリケーションを起動
+# アプリ起動
 CMD ["node", "index.js"]
