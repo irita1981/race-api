@@ -2,6 +2,8 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const app = express();
 
+app.get('/', (_req, res) => res.send('API is running'));
+
 app.get('/race-data', async (req, res) => {
   const { place_no, race_no, hiduke, narabikae } = req.query;
 
