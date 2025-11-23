@@ -12,23 +12,24 @@ app.get('/race-data', async (req, res) => {
   }
 
   const url = `https://kyoteibiyori.com/race_shusso.php?place_no=${place_no}&race_no=${race_no}&hiduke=${hiduke}&slider=1`;
+  console.log(`url: ` + url);
 
   try {
     const browser = await puppeteer.launch({
       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH, // Docker内Chrome
       args: ['--no-sandbox', '--disable-setuid-sandbox'], 
-      headless: true,
+      headless: false
     });
 
     const page = await browser.newPage();
 
     // User-Agent を設定（ブロック回避や安定化のため）
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36');
 
     // ページにアクセス（タイムアウト延長＆読み込み条件を緩和）
     await page.goto(url, {
       waitUntil: 'domcontentloaded',
-      timeout: 60000
+      timeout: 90000
     });
 
     // 必要な要素が出るまで明示的に待つ（これが出ればOK）
