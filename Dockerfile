@@ -1,5 +1,5 @@
 # ベースイメージとして公式のNode.jsを使用
-FROM node:18-slim
+FROM node:20-slim
 
 # 必要なパッケージをインストール（Puppeteer用の依存）
 RUN apt-get update && apt-get install -y \
